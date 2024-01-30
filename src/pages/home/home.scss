@@ -1,0 +1,20 @@
+.starWarsText {
+    transform: perspective(200px) rotateX(14deg);
+    animation: intro 25s linear;
+}
+
+@keyframes intro {
+    0% {
+        transform: perspective(200px) rotateX(14deg) translateY(800px);
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: perspective(200px) rotateX(20deg) translateY(-1000px);
+        opacity: 0;
+    }
+}

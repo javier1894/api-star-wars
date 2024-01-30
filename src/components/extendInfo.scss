@@ -1,0 +1,67 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 38vh 40vh;
+    gap: 50px;
+    grid-template-areas:
+        "info vehicles starships"
+        "films films films";
+
+    .info {
+        grid-area: info;
+    }
+
+    .vehicles {
+        grid-area: vehicles;
+    }
+
+    .starships {
+        grid-area: starships;
+    }
+
+    .films {
+        grid-area: films;
+    }
+
+}
+
+.container2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    gap: 50px;
+    grid-template-areas:
+        "info2"
+        "characters";
+
+    .info2 {
+        grid-area: info2;
+    }
+
+    .characters {
+        grid-area: characters;
+    }
+}
+
+@media (max-width: 1500px) {
+    .container {
+        grid-template-columns: 0.75fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "info"
+            "films"
+            "vehicles"
+            "starships";
+    }
+
+    .vehicles[data-has-content="false"],
+    .starships[data-has-content="false"] {
+        grid-area: none;
+        /* Eliminar el área del grid */
+    }
+
+    .container2 {
+        grid-template-columns: 0.75fr;
+        grid-template-rows: auto auto;
+    }
+}
