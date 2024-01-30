@@ -24,20 +24,26 @@ export const CardInfo = ({ elem, link }) => {
 
     return (
         <div
-            className="w-56 h-80 m-5 flex flex-col items-center justify-between bg-slate-200 border-4 border-[#FFC500] rounded-lg hover:scale-[110%]"
+            className="w-56 h-80 m-5 flex flex-col items-center justify-between bg-gray-950 border-4 border-[#FFC500] rounded-lg hover:scale-[110%]"
             role='button'
             onClick={() => { getId() }}
         >
             {link !== 'films' ? <>
                 {elem ? <img ref={imgRef} onError={() => { remplazar_img(imgRef, noImage) }} className='object-cover rounded-t-md object-top  w-full h-56' src={`${URL_IMG}${link}/${getIdFromUrl(elem.url)}.jpg`} /> : <Spinner color="warning" className="size-6" />}
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900">
+                <h5 className="text-2xl font-bold tracking-tight text-white px-2">
                     {elem?.name}
                 </h5>
-                <p className="font-normal pb-3 text-gray-900">
+                <p className="font-normal pb-3 text-white">
                     {elem?.birth_year}
                 </p>
-            </> : <>{elem ? <img ref={imgRef} onError={() => { remplazar_img(imgRef, noImage) }} className='object-cover rounded-md object-top  w-full h-full' src={`${URL_IMG}${link}/${getIdFromUrl(elem.url)}.jpg`} /> : <Spinner color="warning" className="size-6" />}</>}
-
+            </> : <>{elem ? <img ref={imgRef} onError={() => { remplazar_img(imgRef, noImage) }} className='object-cover rounded-t-md object-top  w-full h-56' src={`${URL_IMG}${link}/${getIdFromUrl(elem.url)}.jpg`} /> : <Spinner color="warning" className="size-6" />}
+                <h5 className="text-2xl font-bold tracking-tight text-white px-2">
+                    {elem?.title}
+                </h5>
+                <p className="font-normal pb-3 text-white">
+                    {elem?.birth_year}
+                </p>
+            </>}
         </div>
     )
 }

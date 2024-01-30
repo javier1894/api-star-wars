@@ -41,22 +41,22 @@ export const NavbarApp = () => {
         <header className="flex flex-row sm:flex-col lg:flex-row justify-between items-center mx-auto px-10 md:px-20">
             <Link role="button" to={'/'}><StarWarLogo /></Link>
 
-            {windowWidth >= 640 && <nav className="w-[550px] h-full rounded-full md:px-6 px-3 py-1 flex flex-wrap flex-row items-center justify-center gap-x-2">
-                <Link className="text-[#FFC500] hover:bg-[#F2F2F2]/30 p-1 rounded-full px-2 sm:px-3 transition ease-in text-sm sm:text-lg capitalize" to="/people">people</Link>
-                <Link className="text-[#FFC500] hover:bg-[#F2F2F2]/30 p-1 rounded-full px-2 sm:px-3 transition ease-in text-sm sm:text-lg capitalize" to="/films">Films</Link>
-                <Link className="text-[#FFC500] hover:bg-[#F2F2F2]/30 p-1 rounded-full px-2 sm:px-3 transition ease-in text-sm sm:text-lg capitalize" to="/planets">Planets</Link>
-                <Link className="text-[#FFC500] hover:bg-[#F2F2F2]/30 p-1 rounded-full px-2 sm:px-3 transition ease-in text-sm sm:text-lg capitalize" to="/vehicles">Vehicles</Link>
-                <Link className="text-[#FFC500] hover:bg-[#F2F2F2]/30 p-1 rounded-full px-2 sm:px-3 transition ease-in text-sm sm:text-lg capitalize" to="/starships">Starships</Link>
+            {windowWidth >= 640 && <nav className="w-[550px] h-full flex flex-wrap flex-row items-center justify-center gap-x-3">
+                <Link className="text-[#FFC500] px-4 hover:scale-[120%] transition ease-in text-sm sm:text-lg capitalize" to="/people">people</Link>
+                <Link className="text-[#FFC500] px-4 hover:scale-[120%] transition ease-in text-sm sm:text-lg capitalize" to="/films">Films</Link>
+                <Link className="text-[#FFC500] px-4 hover:scale-[120%] transition ease-in text-sm sm:text-lg capitalize" to="/planets">Planets</Link>
+                <Link className="text-[#FFC500] px-4 hover:scale-[120%] transition ease-in text-sm sm:text-lg capitalize" to="/vehicles">Vehicles</Link>
+                <Link className="text-[#FFC500] px-4 hover:scale-[120%] transition ease-in text-sm sm:text-lg capitalize" to="/starships">Starships</Link>
             </nav>}
 
             {windowWidth < 640 && <a id="openModal" onClick={() => { setShowNavbar(!showNavbar) }}><BurgerMenuIcon /></a>}
 
             {showNavbar && <nav id="modal" className="absolute top-16 right-2 w-[200px] h-[300px] rounded md:px-6 px-3 py-1 flex flex-col items-center justify-evenly  bg-[#FFC500]/80 backdrop-blur-2xl">
-                <Link className="text-lg" to='/people' >People</Link>
-                <Link className="text-lg" to='/films' >Films</Link>
-                <Link className="text-lg" to='/planets' >Planets</Link>
-                <Link className="text-lg" to='/vehicles' >Vehicles</Link>
-                <Link className="text-lg" to='/starships' >Starships</Link>
+                <Link onClick={() => { setShowNavbar(!showNavbar) }} className="text-lg" to='/people' >People</Link>
+                <Link onClick={() => { setShowNavbar(!showNavbar) }} className="text-lg" to='/films' >Films</Link>
+                <Link onClick={() => { setShowNavbar(!showNavbar) }} className="text-lg" to='/planets' >Planets</Link>
+                <Link onClick={() => { setShowNavbar(!showNavbar) }} className="text-lg" to='/vehicles' >Vehicles</Link>
+                <Link onClick={() => { setShowNavbar(!showNavbar) }} className="text-lg" to='/starships' >Starships</Link>
             </nav>}
         </header>
     )

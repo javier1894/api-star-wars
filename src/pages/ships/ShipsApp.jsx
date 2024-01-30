@@ -1,5 +1,6 @@
 import axios from "axios"
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import '../home/home.scss'
 import { Spinner } from 'flowbite-react';
 import { CardInfo } from "../../components/CardInfo";
 import { StarWarsContext } from "../../context/StarWarsContextProvider";
@@ -8,26 +9,32 @@ import { ArrowRightIcon } from "../../components/icons/ArrowRightIcon"
 
 export const ShipsApp = () => {
     const { ships, setShips } = useContext(StarWarsContext)
+    const [numPage, setNumPage] = useState(1)
 
-    const getNewPage = (url) => {
+    const getNewPage = (url, n) => {
         setShips()
         axios
             .get(url)
             .then((res) => {
                 setShips(res?.data)
+                if (n === 1) {
+                    setNumPage(numPage + 1)
+                } else if (n === 0) {
+                    setNumPage(numPage - 1)
+                }
             })
             .catch((err) => console.log(err))
     }
 
     return (
-        <section className="md:max-w-[600px] lg:max-w-[1300px] h-[800px] text-[#FFC500] mx-auto text-center py-5 ">
+        <section className="dimension max-w-[1400px] text-[#FFC500] mx-auto text-center py-5 px-10">
             {!ships && <Spinner color="warning" className="size-12" />}
             {ships && <>
                 {(ships?.next !== null || ships?.previous !== null) &&
-                    <div className="flex flex-row justify-center pb-5 gap-x-6">
-                        {ships?.previous && <button onClick={() => { getNewPage(ships?.previous) }}><ArrowLeftIcon /></button>}
-
-                        {ships?.next && <button onClick={() => { getNewPage(ships?.next) }}><ArrowRightIcon /></button>}
+                    <div className="flex flex-row justify-center items-center pb-5 gap-x-6">
+                        {ships?.previous && <button onClick={() => { getNewPage(ships?.previous, 0) }}><ArrowLeftIcon /></button>}
+                        <p className="font-semibold">Page {numPage}</p>
+                        {ships?.next && <button onClick={() => { getNewPage(ships?.next, 1) }}><ArrowRightIcon /></button>}
                     </div>}
                 <div className="flex flex-row flex-wrap justify-center items-center">
                     {ships?.results.map((elem, idx) => (
