@@ -46,7 +46,7 @@ export const HomeApp = () => {
                 </section >
             }
             {isVisible && <section className='text mx-auto flex flex-col justify-center items-center'>
-                <h1 className='text-[#FFC500] text-xl md:text-5xl lg:text-6xl font-semibold'>Bienvenidos a la app de Star Wars</h1>
+                <h1 className='text-[#FFC500] text-xl md:text-5xl lg:text-6xl font-semibold'>Welcome to Star Wars App</h1>
                 <img src={homeImage} alt="" className='size-80' />
             </section>}
         </div>
